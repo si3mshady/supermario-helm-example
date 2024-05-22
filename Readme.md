@@ -70,7 +70,9 @@ Helm will create a new Kubernetes deployment and service for the Super Mario gam
 To access the Super Mario game, you need to find the IP address or hostname of the service that Helm created. Run the following command:
 
 ```bash
-kubectl get service supermario-release-supermario
+# kubectl get service supermario-release
+
+kubectl port-forward [pod-name] [local-port]:[remote-port]
 ```
 
 This command will display the service details, including the external IP or hostname. Make a note of the IP/hostname.
