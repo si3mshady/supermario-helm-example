@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: supermario
-        image: 328863170107.dkr.ecr.us-east-1.amazonaws.com/supermario:latest
+        # image: 328863170107.dkr.ecr.us-east-1.amazonaws.com/supermario:latest
+        image: nginx
         ports:
         - containerPort: 80
 ---
@@ -32,3 +33,7 @@ spec:
       port: 80
       targetPort: 80
   type: LoadBalancer
+
+
+# https://redhat-scholars.github.io/argocd-tutorial/argocd-tutorial/02-getting_started.html
+# https://github.com/argoproj/argo-cd/blob/master/docs/getting_started.md
