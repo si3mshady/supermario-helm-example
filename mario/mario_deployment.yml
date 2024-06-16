@@ -35,5 +35,7 @@ spec:
   type: LoadBalancer
 
 
+
+
 # https://redhat-scholars.github.io/argocd-tutorial/argocd-tutorial/02-getting_started.html
 # https://github.com/argoproj/argo-cd/blob/master/docs/getting_started.md
