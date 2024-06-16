@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: supermario
-        image: 328863170107.dkr.ecr.us-east-1.amazonaws.com/supermario:latest
-        # image: nginx
+        # image: 328863170107.dkr.ecr.us-east-1.amazonaws.com/supermario:latest
+        image: nginx
         ports:
         - containerPort: 80
 ---
