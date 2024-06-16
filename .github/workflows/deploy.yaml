@@ -37,7 +37,7 @@ jobs:
         kubectl create namespace argocd
         kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-    - name: Deploy with ArgoCD
-      run: |
-        argocd app create my-app --repo https://github.com/${{ github.repository }} --path path/to/app --dest-server https://kubernetes.default.svc --dest-namespace default
-        argocd app sync my-app
+
+
+# kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+# argoPass=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
