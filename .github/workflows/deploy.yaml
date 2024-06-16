@@ -30,9 +30,15 @@ jobs:
 
     - name: Update kubeconfig
       run: |
+        aws eks get-token --cluster-name ${{ env.EKS_CLUSTER_NAME }} | kubectl apply -f -
         aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER_NAME }} --region ${{ env.AWS_REGION }}
 
-    # # Add your deployment steps here
-    # - name: Deploy to EKS
-    #   run: kubectl apply -f deployment.yaml
-    
+    - name: Install ArgoCD
+      run: |
+        kubectl create namespace argocd
+        kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+    - name: Deploy with ArgoCD
+      run: |
+        argocd app create my-app --repo https://github.com/${{ github.repository }} --path path/to/app --dest-server https://kubernetes.default.svc --dest-namespace default
+        argocd app sync my-app
